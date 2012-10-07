@@ -4,12 +4,12 @@ class Menu
   end
 
   def add(item)
-    @items << item
+    items << item
   end
 
   def show
-    @items.map.with_index do |item, position| 
-      "#{position +1}. #{item.name}, only $#{item.price}!"
+    items.map.with_index do |item, position| 
+      format_output(item, position)
     end
   end
 
@@ -21,5 +21,9 @@ class Menu
 
   def items
     @items
+  end
+
+  def format_output(item, position)
+    "#{position +1}. #{item.name}, only $#{item.price}!"
   end
 end
