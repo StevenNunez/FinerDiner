@@ -17,21 +17,38 @@ describe Menu do
     menu.show.should == []
   end
 
-  it "can have multiple items in it" do
-    menu_item = MenuItem.new 
-    menu_item.name = "Awesome Hotdogs"
-    menu_item.price = "2.99"
-
-    menu_item2 = MenuItem.new 
-    menu_item2.name = "Chunky Bacon"
-    menu_item2.price = "0.99"
-    
+  it "returns nil if invalid fetch value given" do 
     menu = Menu.new
+    menu.fetch(1).should be_nil
+    menu.fetch(-1).should be_nil
+    menu.fetch(100).should be_nil
+    menu.fetch("yogurt").should be_nil
+  end
 
-    menu.add menu_item
-    menu.add menu_item2
+  describe "working with multiple menu items" do
+    before do
+      @menu_item = MenuItem.new 
+      @menu_item.name = "Awesome Hotdogs"
+      @menu_item.price = "2.99"
 
-    result = ["1. Awesome Hotdogs, only $2.99!", "2. Chunky Bacon, only $0.99!"]
-    menu.show.should == result
+      @menu_item2 = MenuItem.new 
+      @menu_item2.name = "Chunky Bacon"
+      @menu_item2.price = "0.99"
+
+      @menu = Menu.new
+
+      @menu.add @menu_item
+      @menu.add @menu_item2
+    end
+
+    it "can have multiple items in it" do
+
+      result = ["1. Awesome Hotdogs, only $2.99!", "2. Chunky Bacon, only $0.99!"]
+      @menu.show.should == result
+    end
+
+    it "returns an item based on item number" do 
+      @menu.fetch(1).name.should == "Awesome Hotdogs"
+    end
   end
 end

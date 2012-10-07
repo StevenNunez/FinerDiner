@@ -13,4 +13,13 @@ class Menu
     end
   end
 
+  def fetch(item_number)
+    items[item_number.to_i - 1] 
+  end
+
+  private
+
+  def items
+    @items
+  end
 end
