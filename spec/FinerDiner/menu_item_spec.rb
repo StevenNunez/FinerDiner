@@ -5,6 +5,7 @@ describe MenuItem do
   before do
     @menu_item = MenuItem.new 
   end
+
   it "can have its name set" do 
     @menu_item.name = "Chunky Bacon"
     @menu_item.name.should == "Chunky Bacon"
