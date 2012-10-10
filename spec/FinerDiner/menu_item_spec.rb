@@ -16,12 +16,12 @@ describe MenuItem do
     @menu_item.price.should == "2.99"
   end
 
-  it "can have its name set" do 
+  it "can have its calorie count set" do 
     @menu_item.calorie_count = 256
     @menu_item.calorie_count.should == 256
   end
 
-  it "can have its name set" do 
+  it "can have its ingredients set" do 
     @menu_item.ingredients = [:bacon, :thats_it]
     @menu_item.ingredients.should == [:bacon, :thats_it]
   end
